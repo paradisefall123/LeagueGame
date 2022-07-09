@@ -1,8 +1,8 @@
 import java.awt.*;
 
 public class Tree extends Obstacle {
-    Tree(int x, int my, int mwidth, int mheight) {
-        super(x, my, mwidth, mheight);
+    Tree(int x, int y, int mwidth, int mheight) {
+        super(x, y, mwidth, mheight);
     }
 
     @Override
