@@ -9,6 +9,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     final int MENU = 0;
     final int GAME = 1;
     final int END = 2;
+    final int INSTRUCTION=3;
     int currentState = MENU;
     Font titleFont;
     Font subscript;
@@ -32,7 +33,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     void updateEndState() {
 
     }
+    void updateInstructionsState(){
 
+    }
     void drawMenuState(Graphics g) {
         g.setColor(Color.pink);
         g.fillRect(0,0, OnTheRun.Width, OnTheRun.Height);
@@ -44,7 +47,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         g.setFont(subscript);
         g.setColor(Color.black);
         g.drawString("Press ENTER to start", 250,200);
-        g.drawString("Press SPACE for instructions", 210,300);
+        g.drawString("Press I for instructions", 210,300);
     }
 
     void drawGameState(Graphics g) {
@@ -60,10 +63,23 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         g.setColor(Color.BLACK);
         g.drawString("GAME OVER", 250,220);
     }
+
+    void drawInstructionState(Graphics g){
+        g.setColor(Color.MAGENTA);
+        g.fillRect(0,0, OnTheRun.Width, OnTheRun.Height);
+
+        g.setFont(subscript);
+        g.setColor(Color.black);
+        g.drawString("Press SPACE or the UP arrow key to make the dog Jump", 10, 100);
+        g.drawString("Jump over as many obstacles you can",100, 120 );
+        g.drawString("Have Fun!",250, 240 );
+        g.drawString("Press I to go back to Menu", 250,320);
+    }
     void drawBackground(Graphics g){
         g.setColor(Color.blue);
         g.fillRect(0,0, OnTheRun.Width, OnTheRun.Height);
     }
+
 
     void drawGame(Graphics g){
         dog.draw(g);
@@ -78,6 +94,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             drawGameState(g);
         } else if (currentState == END) {
             drawEndState(g);
+        } else if(currentState == INSTRUCTION){
+            drawInstructionState(g);
         }
     }
 
@@ -91,6 +109,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
         }else if(currentState == END){
             updateEndState();
+        }else if(currentState == INSTRUCTION) {
+            updateInstructionsState();
         }
         //System.out.println("action");
         repaint();
@@ -110,7 +130,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         } else{
             currentState++;
         }
-    }if(e.getKeyCode()==KeyEvent.VK_SPACE || e.getKeyCode()==KeyEvent.VK_UP){
+    }if(e.getKeyCode()==KeyEvent.VK_I){
+           if(currentState== MENU){
+               currentState=INSTRUCTION;
+           } else if(currentState== INSTRUCTION){
+               currentState=MENU;
+           }
+        }
+    if(e.getKeyCode()==KeyEvent.VK_SPACE || e.getKeyCode()==KeyEvent.VK_UP){
             dog.jump();
         }
 

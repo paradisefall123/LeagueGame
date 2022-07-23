@@ -1,14 +1,23 @@
 import java.awt.*;
 
-public class Tree extends Obstacle {
-    Tree(int x, int y, int mwidth, int mheight) {
-        super(x, y, mwidth, mheight);
-    }
+public class Tree extends GameObject {
 
-    @Override
-    public void draw(Graphics g){
+
+    Tree(int mx, int my, int mwidth, int mheight) {
+        super(mx, my, mwidth, mheight);
+        speed=1;
+
+    }
+    void update() {
+
+        super.update();
+
+    }
+  void draw(Graphics g){
         g.setColor(Color.green);
         g.fillRect(x, y, width, height);
     }
 
-}
+
+    }
+

@@ -3,6 +3,7 @@ public class GameObject {
     int y;
     int width;
     int height;
+    int speed=0;
 
     GameObject(int mx, int my, int mwidth, int mheight){
     x=mx;
