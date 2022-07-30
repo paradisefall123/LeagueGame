@@ -1,27 +1,50 @@
+import javax.imageio.ImageIO;
 import java.awt.*;
 
-public class Obstacle extends GameObject {
-    int m_speed = 0;
+public class Obstacle extends GameObject{
 
-    Obstacle(int mx, int my, int mwidth, int mheight) {
-        super(mx, my, mwidth, mheight);
 
+    Obstacle(int x, int y, int width, int height) {
+        super(x, y, width, height);
+        speed=1;
+        if (needImage) {
+            loadImage("mailbox.png");
+        }
     }
 
-     public void draw(Graphics g) {
+    void draw(Graphics g) {
         update(g);
     }
 
     void move() {
-        x = x - 1;
+        x = x - speed;
     }
 
     void updateObstacle(Graphics g) {
-        g.fillRect(x, y, width, height);
+        if (gotImage) {
+            g.drawImage(image, x, y, width, height, null);
+        } else {
+            g.setColor(Color.BLUE);
+            g.fillRect(x, y, width, height);
+        }
+
+    }
+    void loadImage(String imageFile) {
+        if (needImage) {
+            try {
+                image = ImageIO.read(this.getClass().getResourceAsStream(imageFile));
+                gotImage = true;
+            } catch (Exception e) {
+
+            }
+            needImage = false;
+        }
     }
 
     void update(Graphics g) {
+        super.update();
         updateObstacle(g);
         move();
+
     }
 }

@@ -47,7 +47,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         g.setFont(subscript);
         g.setColor(Color.black);
         g.drawString("Press ENTER to start", 250,200);
-        g.drawString("Press I for instructions", 210,300);
+        g.drawString("Press I for instructions", 250,300);
     }
 
     void drawGameState(Graphics g) {
@@ -71,9 +71,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         g.setFont(subscript);
         g.setColor(Color.black);
         g.drawString("Press SPACE or the UP arrow key to make the dog Jump", 10, 100);
-        g.drawString("Jump over as many obstacles you can",100, 120 );
-        g.drawString("Have Fun!",250, 240 );
-        g.drawString("Press I to go back to Menu", 250,320);
+        g.drawString("Jump over as many obstacles you can",100, 200 );
+        g.drawString("Have Fun!",280, 280 );
+        g.drawString("Press I to go back to Menu", 160,400);
     }
     void drawBackground(Graphics g){
         g.setColor(Color.blue);
